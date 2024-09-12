@@ -12,6 +12,7 @@ import {
 } from "react-icons/ri";
 import { VscMenu } from "react-icons/vsc";
 import { useSelector } from "react-redux";
+import { logo } from "../assets";
 
 const Header = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -40,11 +41,15 @@ const Header = () => {
         <button>
           <VscMenu className="text-30px text-black " />
         </button>
-        <Link
-          to="/"
-          className="uppercase flex items-center font-bold text-4xl text-custom-black tracking-wide max-md:text-2xl"
-        >
-          Mobizly
+        <Link to="/" className="flex items-center gap-2">
+          <span className="uppercase font-bold text-4xl text-custom-black tracking-wide max-md:text-2xl block max-md:hidden">
+            Mobizly
+          </span>
+          <img
+            src={logo}
+            alt="logo"
+            className="w-10 h-10 object-contain hidden max-md:flex"
+          />
         </Link>
 
         <div className="flex items-center justify-end gap-4 ">
