@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearWishlist, removeItem } from "../store/features/wishlistSlice";
 import { BiCartAdd } from "react-icons/bi";
+import { RiCloseLine, RiHeartsLine, RiShoppingBag4Line } from "react-icons/ri";
 
-const Wishlist = () => {
+const Wishlist = ({ onClose }) => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.wishlist.items);
+  const wishlistRef = useRef(); // Ref for detecting clicks outside
 
   const handleRemoveItem = (pid) => {
     console.log("Removing item with id:", pid);
@@ -16,60 +18,84 @@ const Wishlist = () => {
     dispatch(clearWishlist());
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (wishlistRef.current && !wishlistRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   return (
-    <div className="h-[calc(100vh-62px)] w-[25%]  bg-custom-white border border-custom-black border-opacity-10 flex flex-col justify-between absolute top-full right-1 z-50">
+    <div className="h-full w-full bg-white bg-opacity-60 fixed top-0 left-0 bottom-0 right-0 z-50 transition-all duration-300 overflow-hidden">
       <div
-        className={`${
-          items.length > 0 ? "justify-start" : "justify-center"
-        } flex flex-col overflow-y-auto h-[90vh]`}
+        ref={wishlistRef}
+        className="h-screen w-[25%] max-md:w-full max-lg:w-2/3 max-xl:w-[35%] bg-custom-white border border-custom-black border-opacity-10 flex flex-col justify-start gap-6 fixed top-0 bottom-0 right-0 z-50 transition-all duration-300"
       >
-        {items.length === 0 ? (
-          <p className="text-13px text-custom-black text-center font-semibold">
-            Your Wishlist is empty.
-          </p>
-        ) : (
-          items.map((item) => (
-            <div
-              key={item.pid}
-              className="flex justify-between px-4 py-3 border-t first-of-type:border-t-0 border-custom-black border-opacity-10 gap-3"
-            >
-              <div className="w-1/5">
+        <div className="flex justify-between items-center p-4 shadow-sm bg-white">
+          <span className="font-semibold text-23px">Wishlist</span>
+          <RiCloseLine className="text-30px cursor-pointer" onClick={onClose} />
+        </div>
+
+        <div
+          className={`${
+            items.length > 0
+              ? "justify-start items-start "
+              : "justify-center items-center "
+          } flex flex-wrap gap-1 overflow-y-auto max-h-[90vh]`}
+        >
+          {items.length === 0 ? (
+            <div className="flex flex-col items-center justify-center text-custom-black text-center gap-3">
+              <RiHeartsLine className="text-26px my-2" />
+              <p className="text-16px ">
+                You have not added any products to your wishlist.
+              </p>
+              <p className="text-16px">Time to go shopping!</p>
+            </div>
+          ) : (
+            items.map((item) => (
+              <div
+                key={item.pid}
+                className="flex w-[45%] max-md:w-[30%] h-max min-h-[220px] bg-white flex-col justify-between m-2 items-center p-4 shadow-md gap-2"
+              >
+                <h1 className="text-13px text-center leading-tight">
+                  {item.title.slice(0, 30)}
+                </h1>
                 <img
                   src={item.images[0]}
                   alt={item.title}
-                  className="p-1 border border-custom-black border-opacity-10 w-12 h-12 object-contain"
+                  className="p-1 w-2/3 h-20 object-contain"
                 />
-              </div>
-              <div className="w-4/5 flex flex-col justify-center gap-2">
-                <h1 className="text-xs font-bold leading-tight">
-                  {item.title}
-                </h1>
-                <div className="flex items-center gap-3">
-                  <button className="text-23px text-opacity-60 text-custom-black">
-                    <BiCartAdd />
+                <div className="flex w-full shadow-md shadow-gray-200 items-center justify-around gap-6 px-4 py-2">
+                  <button className="text-23px text-custom-black hover:scale-110 transition-all duration-300">
+                    <RiShoppingBag4Line />
                   </button>
                   <button
-                    className="text-xs font-semibold text-custom-red-hover"
+                    className="text-23px font-semibold text-custom-black hover:scale-110 transition-all duration-100"
                     onClick={() => handleRemoveItem(item.pid)}
                   >
-                    remove
+                    <RiCloseLine />
                   </button>
                 </div>
               </div>
-            </div>
-          ))
-        )}
-      </div>
-      {items.length > 0 && (
-        <div className="flex items-center justify-end p-4">
-          <button
-            className="text-xs font-semibold text-custom-red"
-            onClick={handleClearWishlist}
-          >
-            Clear Wishlist
-          </button>
+            ))
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 };
