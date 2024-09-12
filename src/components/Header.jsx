@@ -42,7 +42,7 @@ const Header = () => {
         </button>
         <Link
           to="/"
-          className="uppercase flex items-center font-bold text-4xl text-custom-black tracking-wide"
+          className="uppercase flex items-center font-bold text-4xl text-custom-black tracking-wide max-md:text-2xl"
         >
           Mobizly
         </Link>
@@ -54,10 +54,7 @@ const Header = () => {
           <button>
             <RiSearchLine className="text-23px text-black " />
           </button>
-          <button
-            onClick={handleWishlistVisible}
-            className="relative max-md:hidden"
-          >
+          <button onClick={handleWishlistVisible} className="relative ">
             {wishlistQuantity > 0 ? (
               <RiHeart3Fill className="text-23px text-custom-red " />
             ) : (
