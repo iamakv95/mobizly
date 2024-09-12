@@ -12,7 +12,6 @@ import {
 } from "react-icons/ri";
 import { VscMenu } from "react-icons/vsc";
 import { useSelector } from "react-redux";
-import { logo } from "../assets";
 
 const Header = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -41,15 +40,11 @@ const Header = () => {
         <button>
           <VscMenu className="text-30px text-black " />
         </button>
-        <Link to="/" className="flex items-center gap-2">
-          <span className="uppercase font-bold text-4xl text-custom-black tracking-wide max-md:text-2xl block max-md:hidden">
-            Mobizly
-          </span>
-          <img
-            src={logo}
-            alt="logo"
-            className="w-10 h-10 object-contain hidden max-md:flex"
-          />
+        <Link
+          to="/"
+          className="uppercase flex items-center font-bold text-4xl text-custom-black tracking-wide"
+        >
+          Mobizly
         </Link>
 
         <div className="flex items-center justify-end gap-4 ">
@@ -59,7 +54,10 @@ const Header = () => {
           <button>
             <RiSearchLine className="text-23px text-black " />
           </button>
-          <button onClick={handleWishlistVisible} className="relative ">
+          <button
+            onClick={handleWishlistVisible}
+            className="relative max-md:hidden"
+          >
             {wishlistQuantity > 0 ? (
               <RiHeart3Fill className="text-23px text-custom-red " />
             ) : (
@@ -70,7 +68,10 @@ const Header = () => {
             <Wishlist onClose={() => setWishlistVisible(false)} />
           )}
 
-          <button onClick={handleCartVisibility} className="relative">
+          <button
+            onClick={handleCartVisibility}
+            className="relative max-md:hidden"
+          >
             <RiShoppingBag2Line className="text-23px text-black " />
             {cartQuantity > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500  text-xs text-custom-white rounded-full w-4 h-4 flex items-center justify-center">
