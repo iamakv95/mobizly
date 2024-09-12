@@ -48,13 +48,16 @@ const Header = () => {
         </Link>
 
         <div className="flex items-center justify-end gap-4 ">
-          <button>
+          <button className="max-md:hidden">
             <RiUserLine className="text-23px text-black " />
           </button>
           <button>
             <RiSearchLine className="text-23px text-black " />
           </button>
-          <button onClick={handleWishlistVisible} className="relative">
+          <button
+            onClick={handleWishlistVisible}
+            className="relative max-md:hidden"
+          >
             {wishlistQuantity > 0 ? (
               <RiHeart3Fill className="text-23px text-custom-red " />
             ) : (
