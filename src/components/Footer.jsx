@@ -27,12 +27,12 @@ const Footer = () => {
         <p className="text-16px text-center text-custom-black leading-tight">
           Subscribe now!
         </p>
-        <div className="mt-8 w-full text-center">
+        <div className="mt-8 w-full text-center flex justify-center max-md:flex-col max-md:gap-7">
           <input
             type="email"
             name="email"
             placeholder="store@mobizly.com"
-            className="py-2 px-1 border-b-2 border-custom-black w-1/3 mr-2 outline-none max-md:w-2/3"
+            className="py-2 px-1 border-b-2 border-custom-black w-1/3 mr-2 outline-none max-md:w-full"
           />
           <button
             type="button"
