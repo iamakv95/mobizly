@@ -42,7 +42,7 @@ const Header = () => {
         </button>
         <Link
           to="/"
-          className="uppercase flex items-center font-bold text-4xl text-custom-black tracking-wide"
+          className="uppercase flex items-center font-bold text-4xl text-custom-black tracking-wide max-md:text-3xl"
         >
           Mobizly
         </Link>
