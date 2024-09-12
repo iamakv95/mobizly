@@ -59,7 +59,7 @@ const Wishlist = ({ onClose }) => {
           } flex flex-wrap gap-1 overflow-y-auto max-h-[90vh]`}
         >
           {items.length === 0 ? (
-            <div className="flex flex-col items-center justify-center text-custom-black text-center gap-3">
+            <div className="flex flex-col h-[calc(100vh-100px)] items-center justify-center text-custom-black text-center gap-3">
               <RiHeartsLine className="text-26px my-2" />
               <p className="text-16px ">
                 You have not added any products to your wishlist.
