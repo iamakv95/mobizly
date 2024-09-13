@@ -79,7 +79,7 @@ const Wishlist = ({ onClose }) => {
             items.map((item) => (
               <div
                 key={item.pid}
-                className="flex w-[45%] max-md:w-[30%] h-max min-h-[220px] bg-white flex-col justify-between m-2 items-center p-4 shadow-md gap-2"
+                className="flex w-[45%] h-max min-h-[220px] bg-white flex-col justify-between m-2 items-center p-4 shadow-md gap-2"
               >
                 <h1 className="text-13px text-center leading-tight">
                   {item.title.slice(0, 30)}

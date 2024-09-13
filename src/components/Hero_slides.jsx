@@ -11,7 +11,7 @@ const Hero_slides = () => {
       modules={[Pagination]}
       slidesPerView={1}
       pagination
-      className="mySwiper h-[92vh] max-md:h-[45vh] max-lg:h-[65vh]"
+      className="mySwiper h-[92vh] max-md:h-[45vh] max-lg:h-[65vh] z-0"
     >
       {slides.length > 0 ? (
         slides.map((slide) => (

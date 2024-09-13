@@ -41,11 +41,11 @@ const SingleProduct = () => {
 
   return (
     <main>
-      <div className="container flex justify-between py-10">
-        <div className="w-1/2">
+      <div className="container flex max-md:flex-col max-md:gap-10 justify-between py-10">
+        <div className="w-1/2 max-md:w-full">
           <img src={productInfo?.images[0]} alt={productInfo?.title} />
         </div>
-        <div className="w-1/2 flex flex-col gap-2">
+        <div className="w-1/2 flex flex-col gap-2 max-md:w-full">
           <h1 className="text-23px leading-tight">{productInfo?.title}</h1>
           <span className="text-13px font-normal capitalize text-custom-red">
             {productInfo?.brand}

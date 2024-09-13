@@ -9,7 +9,7 @@ const Home = () => {
     isLoading: mobiledataLoading,
   } = useGetProductsByCategoryQuery("4io");
   return (
-    <main>
+    <div>
       <div className="w-full">
         <Hero_slides />
       </div>
@@ -26,7 +26,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

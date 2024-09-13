@@ -50,9 +50,20 @@ module.exports = {
             opacity: "0",
           },
         },
+        "slide-in-bottom": {
+          "0%": {
+            transform: "translatey(100%)",
+            opacity: "0",
+          },
+          "100%": {
+            transform: "translatey(0)",
+            opacity: "1",
+          },
+        },
       },
       animation: {
         "slide-in-right": "slide-in-right 0.3s ease-out",
+        "slide-in-bottom": "slide-in-bottom 0.3s ease",
         "slide-out-right": "slide-out-right 0.3s ease-out",
       },
     },

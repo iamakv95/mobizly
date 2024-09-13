@@ -34,7 +34,7 @@ const ProductCard = ({ product, isLoading, error }) => {
     >
       <button
         onClick={handleToggleWishlist}
-        className="absolute top-1 right-1 z-10"
+        className="absolute top-1 right-1 z-2"
       >
         {isWishlisted ? <BiSolidHeart fill="red" /> : <BiHeart />}
       </button>

@@ -11,6 +11,8 @@ import StarRating from "./StarRating";
 
 import ProductCard from "./ProductCard";
 
+import Bottom_nav from "./Bottom_nav";
+
 import Cart from "./Cart";
 
 import Wishlist from "./Wishlist";
@@ -25,4 +27,5 @@ export {
   Wishlist,
   Hero_slides,
   Product_slides,
+  Bottom_nav,
 };
