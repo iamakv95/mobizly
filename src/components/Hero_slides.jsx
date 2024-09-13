@@ -11,15 +11,19 @@ const Hero_slides = () => {
       modules={[Pagination]}
       slidesPerView={1}
       pagination
-      className="mySwiper max-h-[calc(100vh-60px)]"
+      className="mySwiper h-[92vh] max-md:h-[45vh] max-lg:h-[65vh]"
     >
       {slides.length > 0 ? (
         slides.map((slide) => (
           <SwiperSlide
             key={slide.key}
-            className="flex items-center justify-center p-14 "
+            className="flex items-center justify-center "
           >
-            <img src={slide.imgUrl} alt={slide.alt} />
+            <img
+              src={slide.imgUrl}
+              alt={slide.alt}
+              className="min-h-full object-contain"
+            />
           </SwiperSlide>
         ))
       ) : (

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearWishlist, removeItem } from "../store/features/wishlistSlice";
 import { BiCartAdd } from "react-icons/bi";
@@ -7,15 +7,19 @@ import { RiCloseLine, RiHeartsLine, RiShoppingBag4Line } from "react-icons/ri";
 const Wishlist = ({ onClose }) => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.wishlist.items);
-  const wishlistRef = useRef(); // Ref for detecting clicks outside
-
+  const wishlistRef = useRef();
+  const [isClosing, setIsClosing] = useState(false);
   const handleRemoveItem = (pid) => {
     console.log("Removing item with id:", pid);
     dispatch(removeItem({ pid }));
   };
 
-  const handleClearWishlist = () => {
-    dispatch(clearWishlist());
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+      setIsClosing(false);
+    }, 200);
   };
 
   useEffect(() => {
@@ -32,23 +36,28 @@ const Wishlist = ({ onClose }) => {
     };
   }, [onClose]);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
+  // useEffect(() => {
+  //   document.body.style.overflow = "hidden";
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   };
+  // }, []);
 
   return (
     <div className="h-full w-full bg-white bg-opacity-60 fixed top-0 left-0 bottom-0 right-0 z-50 transition-all duration-300 overflow-hidden">
       <div
         ref={wishlistRef}
-        className="h-screen w-[25%] max-md:w-full max-lg:w-2/3 max-xl:w-[35%] bg-custom-white border border-custom-black border-opacity-10 flex flex-col justify-start gap-6 fixed top-0 bottom-0 right-0 z-50 transition-all duration-300"
+        className={`${
+          isClosing ? "animate-slide-out-right" : "animate-slide-in-right"
+        } h-screen w-[25%] max-md:w-full max-lg:w-2/3 max-xl:w-[35%] bg-custom-white border border-custom-black border-opacity-10 flex flex-col justify-start gap-6 fixed top-0 bottom-0 right-0 z-50 transition-all duration-300`}
       >
         <div className="flex justify-between items-center p-4 shadow-sm bg-white">
           <span className="font-semibold text-23px">Wishlist</span>
-          <RiCloseLine className="text-30px cursor-pointer" onClick={onClose} />
+          <RiCloseLine
+            className="text-30px cursor-pointer"
+            onClick={handleClose}
+          />
         </div>
 
         <div

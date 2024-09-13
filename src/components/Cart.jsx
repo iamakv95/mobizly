@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   increaseItem,
@@ -12,7 +12,7 @@ const Cart = ({ onClose }) => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
   const cartRef = useRef();
-
+  const [isClosing, setIsClosing] = useState(false);
   const handleQuantityMinus = (item) => {
     if (item && item.pid) {
       dispatch(decreaseItem({ pid: item.pid }));
@@ -33,7 +33,13 @@ const Cart = ({ onClose }) => {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+      setIsClosing(false);
+    }, 200);
+  };
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (cartRef.current && !cartRef.current.contains(event.target)) {
@@ -48,23 +54,20 @@ const Cart = ({ onClose }) => {
     };
   }, [onClose]);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
-
   return (
     <div className="h-full w-full bg-white bg-opacity-60 fixed top-0 left-0 bottom-0 right-0 z-50 transition-all duration-300 overflow-hidden">
       <div
         ref={cartRef}
-        className="h-screen w-[25%] max-md:w-full max-lg:w-2/3 max-xl:w-[35%] bg-custom-white border border-custom-black border-opacity-10 flex flex-col justify-between fixed top-0 bottom-0 right-0 z-50 transition-all duration-300"
+        className={`${
+          isClosing ? "animate-slide-out-right" : "animate-slide-in-right"
+        } h-screen w-[25%] max-md:w-full max-lg:w-2/3 max-xl:w-[35%] bg-custom-white border border-custom-black border-opacity-10 flex flex-col justify-between absolute top-0 bottom-0 right-0 z-50 transition-all duration-300`}
       >
         <div className="flex justify-between items-center p-4 shadow-sm bg-white">
           <span className="font-semibold text-23px">BAG</span>
-          <RiCloseLine className="text-30px cursor-pointer" onClick={onClose} />
+          <RiCloseLine
+            className="text-30px cursor-pointer"
+            onClick={handleClose}
+          />
         </div>
         <div
           className={`${
