@@ -27,7 +27,7 @@ const ProductCard = ({ product }) => {
   return (
     <div
       key={product?.pid}
-      className="flex items-center p-5 flex-col gap-2 relative"
+      className="flex w-full items-center p-5 flex-col gap-2 relative"
     >
       <button
         onClick={handleToggleWishlist}

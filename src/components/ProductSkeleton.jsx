@@ -1,33 +1,39 @@
 import React from "react";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css"; // Importing skeleton CSS
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const ProductSkeleton = () => {
   return (
-    <SkeletonTheme
-      baseColor="#ffeef5"
-      highlightColor="#eff6ff"
-      borderRadius="5px"
-      duration={2.0}
-    >
-      <div className="flex w-full flex-col items-center p-5 gap-4">
-        <div className="w-full">
-          <Skeleton height={250} width="100%" />
-        </div>
+    <div className="flex flex-col w-full p-5 gap-2">
+      <Skeleton
+        height={400}
+        width={340}
+        baseColor="#e4e4e4"
+        highlightColor="#eff6ff"
+        borderRadius="10px"
+      />
 
-        <div className="w-full">
-          <Skeleton width="100%" height={20} />
-        </div>
+      <Skeleton
+        width={340}
+        height={40}
+        baseColor="#e4e4e4"
+        highlightColor="#eff6ff"
+      />
 
-        <div className="w-full">
-          <Skeleton width="100%" height={20} />
-        </div>
+      <Skeleton
+        width={200}
+        height={20}
+        baseColor="#e4e4e4"
+        highlightColor="#eff6ff"
+      />
 
-        <div className="w-full">
-          <Skeleton width="100%" height={20} />
-        </div>
-      </div>
-    </SkeletonTheme>
+      <Skeleton
+        width={150}
+        height={30}
+        baseColor="#e4e4e4"
+        highlightColor="#eff6ff"
+      />
+    </div>
   );
 };
 
