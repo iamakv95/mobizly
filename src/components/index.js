@@ -17,6 +17,10 @@ import Cart from "./Cart";
 
 import Wishlist from "./Wishlist";
 
+import ProductSkeleton from "./ProductSkeleton";
+
+import ProductImageSlider from "./ProductImageSlider";
+
 export {
   Header,
   Footer,
@@ -28,4 +32,6 @@ export {
   Hero_slides,
   Product_slides,
   Bottom_nav,
+  ProductSkeleton,
+  ProductImageSlider,
 };

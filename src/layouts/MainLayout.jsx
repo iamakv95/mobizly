@@ -5,7 +5,7 @@ const MainLayout = () => {
   return (
     <>
       <Header />
-      <main className="relative">
+      <main>
         <Outlet />
         <Bottom_nav />
       </main>

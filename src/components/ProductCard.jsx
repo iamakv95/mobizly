@@ -5,7 +5,7 @@ import { StarRating } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "../store/features/wishlistSlice";
 
-const ProductCard = ({ product, isLoading, error }) => {
+const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const wishlistItems = useSelector((state) => state.wishlist.items);
 
@@ -23,9 +23,6 @@ const ProductCard = ({ product, isLoading, error }) => {
     }
     setIsWishlisted(!isWishlisted);
   };
-
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error fetching products: {error.message}</p>;
 
   return (
     <div

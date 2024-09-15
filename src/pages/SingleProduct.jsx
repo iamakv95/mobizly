@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGetProductInfoQuery } from "../store/services/flipkartAPI";
-import { StarRating } from "../components";
+import { ProductImageSlider, StarRating } from "../components";
 import { useDispatch } from "react-redux";
 import { addItem } from "../store/features/cartSlice";
+import { RiCircleLine } from "react-icons/ri";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -16,15 +17,21 @@ const SingleProduct = () => {
   } = useGetProductInfoQuery(id);
 
   const [emiVisibility, setEmiVisibility] = useState(false);
+  const [isAddingToCart, setIsAddingToCart] = useState(false); // Add loading state
 
   const handleAddToCart = () => {
     if (productInfo) {
+      setIsAddingToCart(true);
       dispatch(
         addItem({
           id: productInfo.pid,
           ...productInfo,
         })
       );
+
+      setTimeout(() => {
+        setIsAddingToCart(false);
+      }, 1000);
     }
   };
 
@@ -40,12 +47,13 @@ const SingleProduct = () => {
   );
 
   return (
-    <main>
-      <div className="container flex max-md:flex-col max-md:gap-10 justify-between py-10">
-        <div className="w-1/2 max-md:w-full">
-          <img src={productInfo?.images[0]} alt={productInfo?.title} />
+    <section>
+      <div className="container flex max-md:flex-col gap-14 justify-between py-10 max-md:py-4 max-md:justify-normal">
+        <div className="w-[45%] max-md:w-full flex flex-col items-center gap-1 sticky top-10 max-lg:relative">
+          <ProductImageSlider productInfo={productInfo} />
         </div>
-        <div className="w-1/2 flex flex-col gap-2 max-md:w-full">
+
+        <div className="w-[55%] flex flex-col gap-2 max-md:w-full">
           <h1 className="text-23px leading-tight">{productInfo?.title}</h1>
           <span className="text-13px font-normal capitalize text-custom-red">
             {productInfo?.brand}
@@ -75,6 +83,22 @@ const SingleProduct = () => {
               </span>
             )}
           </div>
+          <div className="flex items-center max-md:flex-col justify-start gap-3 my-4 w-full">
+            <button
+              onClick={handleAddToCart}
+              className="bg-custom-red max-md:min-w-full min-w-48 min-h-12 py-2 px-4 text-custom-white hover:bg-custom-red-hover hover:text-custom-white flex items-center justify-center text-16px transition-all duration-300"
+              disabled={isAddingToCart}
+            >
+              {isAddingToCart ? (
+                <RiCircleLine className="animate-pulse text-23px" />
+              ) : (
+                "Add to Cart"
+              )}
+            </button>
+            <button className="bg-custom-black max-md:min-w-full min-w-48 min-h-12 text-16px py-2 px-4 text-white">
+              Buy Now
+            </button>
+          </div>
           <div className="flex flex-col gap-3 mt-4">
             <h4 className="text-16px font-semibold">Highlights</h4>
             {productInfo?.highlights?.map((highlight, index) => (
@@ -86,17 +110,7 @@ const SingleProduct = () => {
               </p>
             ))}
           </div>
-          <div className="flex items-center gap-3 mt-4">
-            <button
-              onClick={handleAddToCart}
-              className="bg-custom-red py-2 px-4 text-custom-white hover:bg-custom-red-hover hover:text-custom-white"
-            >
-              Add to Cart
-            </button>
-            <button className="bg-custom-black py-2 px-4 text-white">
-              Buy Now
-            </button>
-          </div>
+
           <div className="flex flex-col gap-2 mt-4">
             <h4 className="text-16px font-semibold">Available Offers</h4>
             {productInfo?.offers?.slice(0, 3).map((offer, index) => (
@@ -138,7 +152,7 @@ const SingleProduct = () => {
           </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 
