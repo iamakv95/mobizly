@@ -7,14 +7,14 @@ const ProductSkeleton = () => {
     <div className="flex flex-col w-full p-5 gap-2">
       <Skeleton
         height={400}
-        width={340}
+        width={300}
         baseColor="#e4e4e4"
         highlightColor="#eff6ff"
         borderRadius="10px"
       />
 
       <Skeleton
-        width={340}
+        width={300}
         height={40}
         baseColor="#e4e4e4"
         highlightColor="#eff6ff"
