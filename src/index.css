@@ -47,6 +47,14 @@
     max-width: max-content;
 }
 
+.productImage_slider_thumbs .ytp-cued-thumbnail-overlay .ytp-large-play-button {
+    width: 30px !important;
+    height: 20px !important;
+    display: none;
+    visibility: none;
+    opacity: 0;
+}
+
 .productImage_slider_thumbs .swiper-slide-thumb-active {
     border: 1px solid rgb(218, 218, 218);
 }
