@@ -213,36 +213,38 @@ const SingleProduct = () => {
                   ))}
             </div>
 
-            <div className="flex flex-col gap-2 mt-4">
-              <h4 className="text-16px font-semibold">
-                {productLoading ? (
-                  <Skeleton
-                    width={150}
-                    baseColor="#e4e4e4"
-                    highlightColor="#eff6ff"
-                  />
-                ) : (
-                  "Available Offers"
-                )}
-              </h4>
-              {productLoading
-                ? [...Array(3)].map((_, index) => (
+            {productInfo?.offers.length > 0 && (
+              <div className="flex flex-col gap-2 mt-4">
+                <h4 className="text-16px font-semibold">
+                  {productLoading ? (
                     <Skeleton
-                      key={index}
-                      width="100%"
+                      width={150}
                       baseColor="#e4e4e4"
                       highlightColor="#eff6ff"
                     />
-                  ))
-                : productInfo?.offers?.slice(0, 3).map((offer, index) => (
-                    <p
-                      key={index}
-                      className="text-13px text-opacity-80 font-semibold text-custom-black"
-                    >
-                      {offer}
-                    </p>
-                  ))}
-            </div>
+                  ) : (
+                    "Available Offers"
+                  )}
+                </h4>
+                {productLoading
+                  ? [...Array(3)].map((_, index) => (
+                      <Skeleton
+                        key={index}
+                        width="100%"
+                        baseColor="#e4e4e4"
+                        highlightColor="#eff6ff"
+                      />
+                    ))
+                  : productInfo?.offers?.slice(0, 3).map((offer, index) => (
+                      <p
+                        key={index}
+                        className="text-13px text-opacity-80 font-semibold text-custom-black"
+                      >
+                        {offer}
+                      </p>
+                    ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
