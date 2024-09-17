@@ -4,10 +4,10 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { Navigation, Thumbs } from "swiper/modules";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { RiPlaneLine, RiPlayCircleLine, RiPlayFill } from "react-icons/ri";
+import { RiPlayFill } from "react-icons/ri";
 
 const ProductImageSlider = ({ productInfo, isLoading }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -17,7 +17,7 @@ const ProductImageSlider = ({ productInfo, isLoading }) => {
   return (
     <>
       {isLoading ? (
-        <div className="w-full h-[450px] max-md:h-[300px]">
+        <div className="w-full h-[650px] max-md:h-[300px]">
           <Skeleton
             width="100%"
             height="100%"
@@ -37,8 +37,8 @@ const ProductImageSlider = ({ productInfo, isLoading }) => {
             swiper:
               thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="productImage_main_slider w-full h-[450px] max-md:h-[300px]"
+          modules={[Navigation, Thumbs]}
+          className="productImage_main_slider w-full h-[550px] max-md:h-[300px]"
         >
           {allImages.map((image, index) => (
             <SwiperSlide key={index}>
@@ -79,24 +79,9 @@ const ProductImageSlider = ({ productInfo, isLoading }) => {
         <Swiper
           onSwiper={setThumbsSwiper}
           spaceBetween={10}
-          slidesPerView={3}
-          freeMode={false}
+          slidesPerView={5}
           modules={[Navigation, Thumbs]}
-          className="productImage_slider_thumbs overflow-hidden w-full"
-          breakpoints={{
-            640: {
-              slidesPerView: 4,
-            },
-            768: {
-              slidesPerView: 4,
-            },
-            1024: {
-              slidesPerView: 4,
-            },
-            1280: {
-              slidesPerView: 5,
-            },
-          }}
+          className="productImage_slider_thumbs w-full"
         >
           {allImages.map((image, index) => {
             const isYouTube =

@@ -41,7 +41,7 @@ const Footer = () => {
             Subscribe
           </button>
         </div>
-        <div className="container flex-col flex gap-1 text-center mt-6 py-5 mb-24">
+        <div className="container flex-col flex gap-1 text-center mt-6 py-5 max-md:mb-24">
           <p className="text-13px font-semibold">© 2024 MOBIZLY </p>
           <p className="text-13px font-normal">
             Made in India, for the World 🌍

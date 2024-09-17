@@ -21,6 +21,10 @@ import ProductSkeleton from "./ProductSkeleton";
 
 import ProductImageSlider from "./ProductImageSlider";
 
+import SingleProductAccordian from "./SingleProductAccordian";
+
+import SingleProductOffers from "./SingleProductOffers";
+
 export {
   Header,
   Footer,
@@ -34,4 +38,6 @@ export {
   Bottom_nav,
   ProductSkeleton,
   ProductImageSlider,
+  SingleProductOffers,
+  SingleProductAccordian,
 };

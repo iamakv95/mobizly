@@ -4,7 +4,13 @@ import {
   useGetProductInfoQuery,
   useGetProductsByCategoryQuery,
 } from "../store/services/flipkartAPI";
-import { Product_slides, ProductImageSlider, StarRating } from "../components";
+import {
+  Product_slides,
+  ProductImageSlider,
+  SingleProductAccordian,
+  SingleProductOffers,
+  StarRating,
+} from "../components";
 import { useDispatch } from "react-redux";
 import { addItem } from "../store/features/cartSlice";
 import { RiCircleLine } from "react-icons/ri";
@@ -29,7 +35,7 @@ const SingleProduct = () => {
     isLoading: relatedProductsLoading,
   } = useGetProductsByCategoryQuery("tyy/4io");
 
-  console.log("relted products ", relatedProducts);
+  console.log("products info", productInfo);
 
   const [isAddingToCart, setIsAddingToCart] = useState(false);
 
@@ -59,15 +65,15 @@ const SingleProduct = () => {
   return (
     <>
       <section>
-        <div className="container flex max-lg:flex-col gap-14 justify-between py-10 max-md:py-4 max-md:justify-normal">
-          <div className="w-[45%] max-lg:w-full flex flex-col items-center gap-1 sticky top-10 max-lg:relative">
+        <div className="container h-[screen] flex max-lg:flex-col gap-14 justify-between py-10 max-md:py-4 max-md:justify-normal relative">
+          <div className="w-[47%] max-h-[90vh] sticky top-10 max-lg:w-full flex flex-col items-center gap-1 max-md:relative">
             <ProductImageSlider
               productInfo={productInfo}
               isLoading={productLoading}
             />
           </div>
 
-          <div className="w-[55%] flex flex-col gap-2 max-lg:w-full">
+          <div className="w-[52%] h-auto  flex flex-col gap-2 max-lg:w-full relative">
             {productLoading ? (
               <Skeleton
                 width="100%"
@@ -118,7 +124,7 @@ const SingleProduct = () => {
               )}
             </div>
 
-            <div className="flex items-center gap-2 mt-2">
+            <div className="flex items-center gap-2 my-2">
               {productLoading ? (
                 <Skeleton
                   width={200}
@@ -142,7 +148,7 @@ const SingleProduct = () => {
                 </>
               )}
             </div>
-
+            <SingleProductOffers id={id} />
             <div className="flex items-center max-md:flex-col justify-start gap-3 my-4 w-full">
               {productLoading ? (
                 <div className="max-md:min-w-full min-w-48 min-h-12 ">
@@ -156,7 +162,7 @@ const SingleProduct = () => {
               ) : (
                 <button
                   onClick={handleAddToCart}
-                  className="bg-custom-red max-md:min-w-full min-w-48 min-h-12 py-2 px-4 text-custom-white hover:bg-custom-red-hover hover:text-custom-white flex items-center justify-center text-16px transition-all duration-300"
+                  className="border-custom-black border max-md:min-w-full min-w-48 min-h-12 py-2 px-4 text-custom-black flex items-center justify-center text-16px transition-all duration-300"
                   disabled={isAddingToCart}
                 >
                   {isAddingToCart ? (
@@ -182,8 +188,8 @@ const SingleProduct = () => {
               )}
             </div>
 
-            <div className="flex flex-col gap-3 mt-4">
-              <h4 className="text-16px font-semibold">
+            <div className="flex flex-col gap-3 my-4">
+              <h4 className="text-lg ">
                 {productLoading ? (
                   <Skeleton
                     width={150}
@@ -206,45 +212,15 @@ const SingleProduct = () => {
                 : productInfo?.highlights?.map((highlight, index) => (
                     <p
                       key={index}
-                      className="text-13px text-opacity-80 font-semibold text-custom-black"
+                      className="text-13px text-opacity-90 text-custom-black"
                     >
                       {highlight}
                     </p>
                   ))}
             </div>
-
-            {productInfo?.offers.length > 0 && (
-              <div className="flex flex-col gap-2 mt-4">
-                <h4 className="text-16px font-semibold">
-                  {productLoading ? (
-                    <Skeleton
-                      width={150}
-                      baseColor="#e4e4e4"
-                      highlightColor="#eff6ff"
-                    />
-                  ) : (
-                    "Available Offers"
-                  )}
-                </h4>
-                {productLoading
-                  ? [...Array(3)].map((_, index) => (
-                      <Skeleton
-                        key={index}
-                        width="100%"
-                        baseColor="#e4e4e4"
-                        highlightColor="#eff6ff"
-                      />
-                    ))
-                  : productInfo?.offers?.slice(0, 3).map((offer, index) => (
-                      <p
-                        key={index}
-                        className="text-13px text-opacity-80 font-semibold text-custom-black"
-                      >
-                        {offer}
-                      </p>
-                    ))}
-              </div>
-            )}
+            <div className="flex flex-col my-4 border border-gray-300 gap-1">
+              <SingleProductAccordian id={id} />
+            </div>
           </div>
         </div>
       </section>

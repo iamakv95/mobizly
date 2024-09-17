@@ -42,9 +42,11 @@
 
 .productImage_slider_thumbs .swiper-slide {
     cursor: pointer;
-    border: 1px solid rgb(241, 241, 241);
+}
+
+.productImage_slider_thumbs .swiper-slide img {
     padding: 7px;
-    max-width: max-content;
+    border: 1px solid rgb(241, 241, 241);
 }
 
 .productImage_slider_thumbs .ytp-cued-thumbnail-overlay .ytp-large-play-button {
@@ -55,21 +57,6 @@
     opacity: 0;
 }
 
-.productImage_slider_thumbs .swiper-slide-thumb-active {
+.productImage_slider_thumbs .swiper-slide-thumb-active img {
     border: 1px solid rgb(218, 218, 218);
-}
-
-.productImage_main_slider .swiper-button-prev,
-.productImage_main_slider .swiper-button-next {
-    background-color: rgb(212, 212, 212);
-    padding: 20px;
-    width: 25px;
-    height: 25px;
-    border-radius: 100px;
-}
-
-.productImage_main_slider .swiper-button-prev:after,
-.productImage_main_slider .swiper-button-next:after {
-    font-size: 22px;
-    color: #000;
 }
