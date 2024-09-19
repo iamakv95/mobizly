@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetProductInfoQuery } from "../store/services/flipkartAPI";
+import { useGetProductInfoQuery } from "../../store/services/flipkartAPI";
 import { RiDiscountPercentLine } from "react-icons/ri";
 import Skeleton from "react-loading-skeleton";
 

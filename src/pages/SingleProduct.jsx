@@ -7,8 +7,11 @@ import {
 import {
   Product_slides,
   ProductImageSlider,
-  SingleProductAccordian,
+  SingleProductDescp,
+  SingleProductFeatures,
+  SingleProductMoreInfo,
   SingleProductOffers,
+  SingleProductSpecs,
   StarRating,
 } from "../components";
 import { useDispatch } from "react-redux";
@@ -34,8 +37,6 @@ const SingleProduct = () => {
     error: relatedProductsError,
     isLoading: relatedProductsLoading,
   } = useGetProductsByCategoryQuery("tyy/4io");
-
-  console.log("products info", productInfo);
 
   const [isAddingToCart, setIsAddingToCart] = useState(false);
 
@@ -210,16 +211,16 @@ const SingleProduct = () => {
                     />
                   ))
                 : productInfo?.highlights?.map((highlight, index) => (
-                    <p
-                      key={index}
-                      className="text-13px text-opacity-90 text-custom-black"
-                    >
+                    <p key={index} className="text-sm text-custom-black">
                       {highlight}
                     </p>
                   ))}
             </div>
             <div className="flex flex-col my-4 border border-gray-300 gap-1">
-              <SingleProductAccordian id={id} />
+              <SingleProductMoreInfo id={id} />
+              <SingleProductDescp id={id} />
+              <SingleProductFeatures id={id} />
+              <SingleProductSpecs id={id} />
             </div>
           </div>
         </div>

@@ -9,6 +9,7 @@ const Home = () => {
     isLoading: mobiledataLoading,
   } = useGetProductsByCategoryQuery("4io");
 
+  console.log("products", mobiledata);
   if (mobiledataError) {
     console.error("Error fetching mobile data:", mobiledataError);
     return <p>Error: {mobiledataError.message}</p>;

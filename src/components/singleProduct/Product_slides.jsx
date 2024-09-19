@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { ProductCard } from "../components";
+import { ProductCard } from "../../components";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/bundle";
 import "swiper/css/pagination";
@@ -50,27 +50,22 @@ const Product_slides = ({ products, isLoading }) => {
         </div>
       ) : hasProducts ? (
         <Swiper
-          modules={[Navigation, Pagination]}
-          slidesPerView={slidesPerView}
+          modules={[Navigation]}
+          slidesPerView={2}
           spaceBetween={30}
-          navigation={
-            slidesPerView >= 5 ? { enabled: true } : { enabled: false }
-          }
+          navigation={true}
           breakpoints={{
             640: {
               slidesPerView: 2,
-              navigation: { enabled: false },
             },
             768: {
               slidesPerView: 3,
-              navigation: { enabled: false },
             },
             1024: {
               slidesPerView: 5,
-              navigation: { enabled: true },
             },
           }}
-          className="productImage_main_slider p-8 z-0"
+          className="related_product_slider p-8 max-md:p-4 z-0"
         >
           {products?.products?.map((product) => (
             <SwiperSlide key={product?.pid}>

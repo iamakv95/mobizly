@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
-import { useGetProductInfoQuery } from "../store/services/flipkartAPI";
+import { useGetProductInfoQuery } from "../../store/services/flipkartAPI";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { RiAddLine, RiSubtractLine } from "react-icons/ri";
-const SingleProductAccordian = ({ id }) => {
+const SingleProductMoreInfo = ({ id }) => {
   const { data: productInfo, isLoading: productLoading } =
     useGetProductInfoQuery(id);
   const [isOpen, setIsOpen] = useState(false);
@@ -74,4 +74,4 @@ const SingleProductAccordian = ({ id }) => {
   );
 };
 
-export default SingleProductAccordian;
+export default SingleProductMoreInfo;

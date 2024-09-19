@@ -5,7 +5,7 @@ import HeaderCategories from "./HeaderCategories";
 
 import Hero_slides from "./Hero_slides";
 
-import Product_slides from "./Product_slides";
+import Product_slides from "./singleProduct/Product_slides";
 
 import StarRating from "./StarRating";
 
@@ -19,11 +19,17 @@ import Wishlist from "./Wishlist";
 
 import ProductSkeleton from "./ProductSkeleton";
 
-import ProductImageSlider from "./ProductImageSlider";
+import ProductImageSlider from "./singleProduct/ProductImageSlider";
 
-import SingleProductAccordian from "./SingleProductAccordian";
+import SingleProductMoreInfo from "./singleProduct/SingleProductMoreInfo";
 
-import SingleProductOffers from "./SingleProductOffers";
+import SingleProductOffers from "./singleProduct/SingleProductOffers";
+
+import SingleProductDescp from "./singleProduct/SingleProductDescp";
+
+import SingleProductFeatures from "./singleProduct/SingleProductFeatures";
+
+import SingleProductSpecs from "./singleProduct/SingleProductSpecs";
 
 export {
   Header,
@@ -39,5 +45,8 @@ export {
   ProductSkeleton,
   ProductImageSlider,
   SingleProductOffers,
-  SingleProductAccordian,
+  SingleProductMoreInfo,
+  SingleProductDescp,
+  SingleProductFeatures,
+  SingleProductSpecs,
 };
