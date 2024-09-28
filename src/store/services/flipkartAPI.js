@@ -17,7 +17,7 @@ export const flipkartAPI = createApi({
       query: () => "get-categories",
     }),
     getSubCategory: builder.query({
-      query: () => "get-subcategories?id=tyy",
+      query: (catid) => `get-subcategories?id=${catid}`,
     }),
     getProductInfo: builder.query({
       query: (pid) => `product-details?pid=${pid}`,

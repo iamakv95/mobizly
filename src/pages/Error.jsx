@@ -8,7 +8,6 @@ const Error = () => {
       <p>
         Go to
         <Link to="/" className="underline text-custom-red">
-          {" "}
           Home
         </Link>
       </p>

@@ -53,3 +53,32 @@ const ApiData = () => {
 };
 
 export default ApiData;
+
+// nav cate
+
+{
+  data &&
+    Object.keys(data)
+      .sort((a, b) => {
+        const lengthA = data[a].title.length;
+        const lengthB = data[b].title.length;
+
+        if (lengthA !== lengthB) {
+          return lengthA - lengthB;
+        }
+
+        return data[a].title.localeCompare(data[b].title);
+      })
+      .map((key) => {
+        const subCategory = data[key];
+        return (
+          <Link
+            to={`collection/${subCategory?.id}`}
+            key={subCategory.id}
+            className="text-23px text-custom-black"
+          >
+            {subCategory.title}
+          </Link>
+        );
+      });
+}

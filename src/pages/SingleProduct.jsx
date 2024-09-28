@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import {
   useGetProductInfoQuery,
   useGetProductsByCategoryQuery,
+  useGetSubCategoryQuery,
 } from "../store/services/flipkartAPI";
 import {
   Product_slides,
@@ -30,7 +31,7 @@ const SingleProduct = () => {
     isLoading: productLoading,
   } = useGetProductInfoQuery(id);
 
-  console.log("product info", productInfo);
+  // console.log("product info", productInfo);
 
   const {
     data: relatedProducts,
@@ -149,7 +150,19 @@ const SingleProduct = () => {
                 </>
               )}
             </div>
-            <SingleProductOffers id={id} />
+            {productLoading ? (
+              [...Array(10)].map((_, index) => (
+                <Skeleton
+                  key={index}
+                  width="80%"
+                  height={20}
+                  baseColor="#e4e4e4"
+                  highlightColor="#eff6ff"
+                />
+              ))
+            ) : (
+              <SingleProductOffers id={id} />
+            )}
             <div className="flex items-center max-md:flex-col justify-start gap-3 my-4 w-full">
               {productLoading ? (
                 <div className="max-md:min-w-full min-w-48 min-h-12 ">
@@ -205,7 +218,7 @@ const SingleProduct = () => {
                 ? [...Array(3)].map((_, index) => (
                     <Skeleton
                       key={index}
-                      width="100%"
+                      width="70%"
                       baseColor="#e4e4e4"
                       highlightColor="#eff6ff"
                     />
@@ -217,10 +230,46 @@ const SingleProduct = () => {
                   ))}
             </div>
             <div className="flex flex-col my-4 border border-gray-300 gap-1">
-              <SingleProductMoreInfo id={id} />
-              <SingleProductDescp id={id} />
-              <SingleProductFeatures id={id} />
-              <SingleProductSpecs id={id} />
+              {productLoading ? (
+                <Skeleton
+                  width="100%"
+                  height={40}
+                  baseColor="#e4e4e4"
+                  highlightColor="#eff6ff"
+                />
+              ) : (
+                <SingleProductMoreInfo productInfo={productInfo} />
+              )}
+              {productLoading ? (
+                <Skeleton
+                  width="100%"
+                  height={40}
+                  baseColor="#e4e4e4"
+                  highlightColor="#eff6ff"
+                />
+              ) : (
+                <SingleProductDescp productInfo={productInfo} />
+              )}
+              {productLoading ? (
+                <Skeleton
+                  width="100%"
+                  height={40}
+                  baseColor="#e4e4e4"
+                  highlightColor="#eff6ff"
+                />
+              ) : (
+                <SingleProductFeatures productInfo={productInfo} />
+              )}
+              {productLoading ? (
+                <Skeleton
+                  width="100%"
+                  height={40}
+                  baseColor="#e4e4e4"
+                  highlightColor="#eff6ff"
+                />
+              ) : (
+                <SingleProductSpecs productInfo={productInfo} />
+              )}
             </div>
           </div>
         </div>

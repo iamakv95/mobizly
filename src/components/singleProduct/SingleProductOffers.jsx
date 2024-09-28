@@ -22,25 +22,15 @@ const SingleProductOffers = ({ id }) => {
               "Available Offers"
             )}
           </h4>
-          {productLoading
-            ? [...Array(10)].map((_, index) => (
-                <Skeleton
-                  key={index}
-                  width={200}
-                  height={20}
-                  baseColor="#e4e4e4"
-                  highlightColor="#eff6ff"
-                />
-              ))
-            : productInfo?.offers?.map((offer, index) => (
-                <p
-                  key={index}
-                  className="text-13px text-opacity-90 flex items-start gap-1 text-custom-black"
-                >
-                  <RiDiscountPercentLine className="text-red-400 mt-[3px]" />
-                  {offer}
-                </p>
-              ))}
+          {productInfo?.offers?.map((offer, index) => (
+            <p
+              key={index}
+              className="text-13px text-opacity-90 flex items-start gap-1 text-custom-black"
+            >
+              <RiDiscountPercentLine className="text-red-400 mt-[3px]" />
+              {offer}
+            </p>
+          ))}
         </div>
       )}
     </>

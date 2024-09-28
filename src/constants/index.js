@@ -42,13 +42,13 @@ export const socialMedia = [
   { iconURL: RiYoutubeLine, href: "https://www.youtube.com", key: "youtube" },
 ];
 
-// export const navLinks = [
-//   { href: "#women", label: "Women" },
-//   { href: "#men", label: "Men" },
-//   { href: "#kids", label: "Kids" },
-//   { href: "#sale", label: "Sale", linkHighlight: "true", special: true },
-//   { href: "#contact-us", label: "Connect With The Unexpected" },
-// ];
+export const navLinks = [
+  { href: "collection/:id", label: "Mobiles" },
+  { href: "/tablets", label: "Tablets" },
+  { href: "/mobile_accessories", label: "Mobile Accessories" },
+  { href: "/tablet_accessories", label: "Tablet Accessories" },
+  { href: "/power_bank_skins", label: "Power Bank Skins" },
+];
 
 // export const userIcons = [
 //   { iconURL: PiUser, href: "/", key: "account" },

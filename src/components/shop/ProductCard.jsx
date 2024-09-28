@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BiHeart, BiInfoCircle, BiSolidHeart } from "react-icons/bi";
-import { StarRating } from "../components";
+import { StarRating } from "..";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, removeItem } from "../store/features/wishlistSlice";
+import { addItem, removeItem } from "../../store/features/wishlistSlice";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
       >
         {isWishlisted ? <BiSolidHeart fill="red" /> : <BiHeart />}
       </button>
-      <Link to={`/${product?.pid}`} className=" hover:opacity-90 z-1 ">
+      <Link to={`/shop/${product?.pid}`} className=" hover:opacity-90 z-1 ">
         <img
           src={product?.images[0]}
           alt={product?.title}
@@ -47,7 +47,7 @@ const ProductCard = ({ product }) => {
           Promoted <BiInfoCircle />
         </p>
       )}
-      <Link to={`/${product?.pid}`} className="hover:text-black">
+      <Link to={`/shop/${product?.pid}`} className="hover:text-black">
         <h2 className="text-16px text-custom-black leading-tight capitalize text-center">
           {product?.title?.slice(0, 30) + "..."}
         </h2>

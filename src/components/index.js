@@ -1,7 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 
-import HeaderCategories from "./HeaderCategories";
+import MobileNav from "./MobileNav";
 
 import Hero_slides from "./Hero_slides";
 
@@ -9,7 +9,7 @@ import Product_slides from "./singleProduct/Product_slides";
 
 import StarRating from "./StarRating";
 
-import ProductCard from "./ProductCard";
+import ProductCard from "./shop/ProductCard";
 
 import Bottom_nav from "./Bottom_nav";
 
@@ -34,10 +34,10 @@ import SingleProductSpecs from "./singleProduct/SingleProductSpecs";
 export {
   Header,
   Footer,
-  HeaderCategories,
   StarRating,
   ProductCard,
   Cart,
+  MobileNav,
   Wishlist,
   Hero_slides,
   Product_slides,

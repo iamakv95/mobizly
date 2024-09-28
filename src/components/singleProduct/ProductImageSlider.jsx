@@ -40,7 +40,7 @@ const ProductImageSlider = ({ productInfo, isLoading }) => {
           modules={[Navigation, Thumbs]}
           className="productImage_main_slider w-full h-[550px] max-md:h-[300px]"
         >
-          {allImages.map((image, index) => (
+          {productInfo?.images?.map((image, index) => (
             <SwiperSlide key={index}>
               {image.includes("youtube.com") ? (
                 <iframe

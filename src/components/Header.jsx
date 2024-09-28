@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
-import { Cart, Wishlist } from "../components";
+import { Cart, MobileNav, Wishlist } from "../components";
 import {
   RiHeart2Fill,
   RiHeart3Fill,
@@ -25,6 +25,7 @@ const Header = () => {
   const wishlistQuantity = wishlistItems.length;
   const [cartVisible, setCartVisible] = useState(false);
   const [wishlistVisible, setWishlistVisible] = useState(false);
+  const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 
   const handleCartVisibility = () => {
     setCartVisible(!cartVisible);
@@ -34,10 +35,14 @@ const Header = () => {
     setWishlistVisible(!wishlistVisible);
   };
 
+  const handleMobileMenuVisible = () => {
+    setMobileMenuVisible(!mobileMenuVisible);
+  };
+
   return (
     <header className="border-b border-custom-black border-opacity-20">
       <div className="container flex items-center justify-between py-3">
-        <button>
+        <button onClick={handleMobileMenuVisible}>
           <VscMenu className="text-30px text-black " />
         </button>
         <Link
@@ -82,6 +87,9 @@ const Header = () => {
           {cartVisible && <Cart onClose={() => setCartVisible(false)} />}
         </div>
       </div>
+      {mobileMenuVisible && (
+        <MobileNav onClose={() => setMobileMenuVisible(false)} />
+      )}
     </header>
   );
 };
