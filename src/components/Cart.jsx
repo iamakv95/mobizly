@@ -79,7 +79,12 @@ const Cart = ({ onClose }) => {
               <p className="text-20px font-semibold"> Shopping Bag</p>
               <RiEmotionUnhappyLine className="text-26px my-2" />
               <p className="text-16px ">Oh no! Your bag is empty.</p>
-              <p className="text-16px">Time to go shopping!</p>
+              <p className="text-16px">
+                Time to go{" "}
+                <Link to="/shop" className="underline">
+                  shopping!
+                </Link>
+              </p>
             </div>
           ) : (
             items.map((item) => (

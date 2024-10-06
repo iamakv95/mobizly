@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import {
   useGetProductInfoQuery,
   useGetProductsByCategoryQuery,
-  useGetSubCategoryQuery,
 } from "../store/services/flipkartAPI";
 import {
   Product_slides,
@@ -20,6 +19,7 @@ import { addItem } from "../store/features/cartSlice";
 import { RiCircleLine } from "react-icons/ri";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Helmet } from "react-helmet-async";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -30,14 +30,11 @@ const SingleProduct = () => {
     error: productError,
     isLoading: productLoading,
   } = useGetProductInfoQuery(id);
-
-  // console.log("product info", productInfo);
-
   const {
     data: relatedProducts,
     error: relatedProductsError,
     isLoading: relatedProductsLoading,
-  } = useGetProductsByCategoryQuery("tyy/4io");
+  } = useGetProductsByCategoryQuery({ cid: "4io", page: 1 });
 
   const [isAddingToCart, setIsAddingToCart] = useState(false);
 
@@ -66,6 +63,9 @@ const SingleProduct = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{`${productInfo?.title} - Mobizly`}</title>
+      </Helmet>
       <section>
         <div className="container h-[screen] flex max-lg:flex-col gap-14 justify-between py-10 max-md:py-4 max-md:justify-normal relative">
           <div className="w-[47%] max-h-[90vh] sticky top-10 max-lg:w-full flex flex-col items-center gap-1 max-md:relative">

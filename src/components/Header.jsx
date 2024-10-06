@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Cart, MobileNav, Wishlist } from "../components";
 import {
-  RiHeart2Fill,
   RiHeart3Fill,
   RiHeart3Line,
   RiSearchLine,
@@ -40,7 +39,7 @@ const Header = () => {
   };
 
   return (
-    <header className="border-b border-custom-black border-opacity-20">
+    <header className="border-b border-custom-black border-opacity-20 sticky top-0 z-50 bg-white">
       <div className="container flex items-center justify-between py-3">
         <button onClick={handleMobileMenuVisible}>
           <VscMenu className="text-30px text-black " />

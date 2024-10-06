@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearWishlist, removeItem } from "../store/features/wishlistSlice";
 import { BiCartAdd } from "react-icons/bi";
 import { RiCloseLine, RiHeartsLine, RiShoppingBag4Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const Wishlist = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -65,7 +66,12 @@ const Wishlist = ({ onClose }) => {
               <p className="text-16px ">
                 You have not added any products to your wishlist.
               </p>
-              <p className="text-16px">Time to go shopping!</p>
+              <p className="text-16px">
+                Time to go{" "}
+                <Link to="/shop" className="underline">
+                  shopping!
+                </Link>
+              </p>
             </div>
           ) : (
             items.map((item) => (

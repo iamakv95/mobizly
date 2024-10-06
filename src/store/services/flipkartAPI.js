@@ -23,8 +23,8 @@ export const flipkartAPI = createApi({
       query: (pid) => `product-details?pid=${pid}`,
     }),
     getProductsByCategory: builder.query({
-      query: (cid) =>
-        `products-by-category?category_id=${cid}&sort_by=popularity`,
+      query: ({ cid, page }) =>
+        `products-by-category?category_id=${cid}&page=${page}&sort_by=popularity`,
     }),
     getProductSearch: builder.query({
       query: (searchTerm) =>

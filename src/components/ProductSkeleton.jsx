@@ -6,30 +6,30 @@ const ProductSkeleton = () => {
   return (
     <div className="flex flex-col w-full p-5 gap-2">
       <Skeleton
-        height={400}
-        width={300}
+        height={200}
+        width="100%"
         baseColor="#e4e4e4"
         highlightColor="#eff6ff"
         borderRadius="10px"
       />
 
       <Skeleton
-        width={300}
-        height={40}
-        baseColor="#e4e4e4"
-        highlightColor="#eff6ff"
-      />
-
-      <Skeleton
-        width={200}
-        height={20}
-        baseColor="#e4e4e4"
-        highlightColor="#eff6ff"
-      />
-
-      <Skeleton
-        width={150}
+        width="100%"
         height={30}
+        baseColor="#e4e4e4"
+        highlightColor="#eff6ff"
+      />
+
+      <Skeleton
+        width="80%"
+        height={10}
+        baseColor="#e4e4e4"
+        highlightColor="#eff6ff"
+      />
+
+      <Skeleton
+        width="100%"
+        height={20}
         baseColor="#e4e4e4"
         highlightColor="#eff6ff"
       />

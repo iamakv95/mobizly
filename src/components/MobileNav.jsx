@@ -87,10 +87,7 @@ const MobileNav = ({ onClose }) => {
                 const subCategory = data[key];
                 return (
                   <Link
-                    // to={`/collection/${subCategory.id.split("/").pop()}`}
-                    to={`/collection/${subCategory.title
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
+                    to={`/collection/${subCategory.id.split("/").pop()}`}
                     key={subCategory.id}
                     className="text-23px text-custom-black"
                   >

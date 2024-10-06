@@ -12,7 +12,6 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        // Ignore these paths from the serializable check non sanetized value error disable
         ignoredActions: [flipkartAPI.util.resetApiState.type],
         ignoredPaths: ["flipkartAPI"],
       },
