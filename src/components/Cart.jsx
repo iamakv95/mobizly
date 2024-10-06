@@ -7,6 +7,7 @@ import {
 } from "../store/features/cartSlice";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { RiCloseLine, RiEmotionUnhappyLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const Cart = ({ onClose }) => {
   const dispatch = useDispatch();
